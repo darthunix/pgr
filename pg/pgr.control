@@ -1,0 +1,4 @@
+comment = 'pgr'
+default_version = '0.1'
+module_pathname = '$libdir/pgr'
+relocatable = true
