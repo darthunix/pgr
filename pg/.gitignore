@@ -33,3 +33,7 @@
 
 # Compilation database
 compile_commands.json
+
+# Project specific
+rust_build
+src/rust4pg.h

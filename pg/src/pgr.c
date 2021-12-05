@@ -12,13 +12,13 @@ PG_MODULE_MAGIC;
 PG_FUNCTION_INFO_V1(hello_rust);
 Datum
 hello_rust(PG_FUNCTION_ARGS) {
-    char *buf;
-    int len = 100;
+    PgMemoryChunk chunk;
 
-    buf = palloc(sizeof(char) * len);
-    if (hello_world(buf, len) > 0) {
-        PG_RETURN_TEXT_P(cstring_to_text(buf));
+    chunk = hello_world();
+    if (chunk.error > 0)
+    {
+        PG_RETURN_TEXT_P(cstring_to_text("Error"));
     }
 
-    PG_RETURN_TEXT_P(cstring_to_text("ERROR"));
+    PG_RETURN_TEXT_P(cstring_to_text(chunk.ptr));
 }
