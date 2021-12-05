@@ -23,4 +23,4 @@ This example calls a Rust function `hello_world()` inside PG that:
 1. Copies the string from the Rust memory to the palloced one and attaches the pointer and some additional information to `PgMemoryChunk` structure.
 1. Returns `PgMemoryChunk` (it has a C ABI) to PG function, retrieves data and prints the string.
 
-We should not care about Rust memory as its compiler automatically adds deallocations when the objects runs out of the scope.
+We should not care about GC in Rust as its compiler automatically adds deallocations when the objects run out of the scope.
